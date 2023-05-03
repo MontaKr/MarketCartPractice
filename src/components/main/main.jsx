@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Product } from "../products/product";
 import { getProducts } from "../../service/fetcher";
 import { EventBanner } from "../eventBanner/eventBanner";
+import styled from "styled-components";
 
 export const Main = ({ products, setProducts, convertPrice }) => {
   useEffect(() => {

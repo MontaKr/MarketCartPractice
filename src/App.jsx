@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BrowserRoute, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/home";
 import Product from "./pages/product";
 import Basket from "./pages/basket";
@@ -13,7 +13,7 @@ export default function App() {
   };
 
   return (
-    <BrowserRoute>
+    <BrowserRouter>
       <TopNavigationBar />
       <Routes>
         <Route
@@ -32,6 +32,6 @@ export default function App() {
         />
         <Route path="/cart" element={<Basket />} />
       </Routes>
-    </BrowserRoute>
+    </BrowserRouter>
   );
 }
