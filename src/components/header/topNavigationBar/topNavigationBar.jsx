@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export const TopNavigationBar = () => {
+export const TopNavigationBar = ({ cart }) => {
   return (
     <Wrap>
       <header className="header">
@@ -16,12 +16,18 @@ export const TopNavigationBar = () => {
             <img src="/images/icon-search.svg" alt="search" />
           </div>
         </div>
-
         <div className="menu">
           <Link to="/cart">
             <div className="shopping_cart">
               <img src="/images/icon-shopping-cart.svg" alt="cart" />
               <span>장바구니</span>
+              {cart.length >= 1 ? (
+                <div className="new_shopping_cart">
+                  <p>{cart.length}</p>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </Link>
           <Link to="">

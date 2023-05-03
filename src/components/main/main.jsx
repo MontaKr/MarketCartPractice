@@ -10,6 +10,7 @@ export const Main = ({ products, setProducts, convertPrice }) => {
       setProducts(data.data.products);
     });
   }, [setProducts]);
+
   return (
     <Wrap>
       <EventBanner />

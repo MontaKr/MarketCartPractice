@@ -1,38 +1,35 @@
 import styled from "styled-components";
-import CartHeader from "./cartHeader";
-import CartList from "./cartList";
-import TotalCart from "./totalCart";
 
-export const Cart = ({ cart, setCart, convertPrice }) => {
+export default function TotalCart() {
   return (
     <Wrap>
-      <header className="header">
-        <h1>장바구니</h1>
-      </header>
-      <CartHeader />
-
-      {cart.length === 0 ? (
-        <div className="not">
-          <h2>장바구니에 담긴 상품이 없습니다.</h2>
-          <p>원하는 상품을 장바구니에 담아보세요.</p>
+      <div className="total">
+        <div className="total_price">
+          <p className="cart_product_total_price">총 상품금액</p>
+          <p className="cart_product_price">0</p>
         </div>
-      ) : (
-        cart.map((cart) => {
-          return (
-            <CartList
-              key={`key-${cart.id}`}
-              cart={cart}
-              setCart={setCart}
-              convertPrice={convertPrice}
-            />
-          );
-        })
-      )}
-
-      {cart.length === 0 ? "" : <TotalCart />}
+        <div className="pay_minus">
+          <img src="/images/icon-minus-line.svg" alt="minus" />
+        </div>
+        <div className="sale">
+          <p className="cart_product_sale">상품 할인</p>
+          <p className="cart_product_sale_price">0원</p>
+        </div>
+        <div className="pay_plus">
+          <img src="/images/icon-plus-line.svg" alt="plus" />
+        </div>
+        <div className="delivery">
+          <p className="cart_product_delivery">배송비</p>
+          <p className="cart_product_delivery_price">0원</p>
+        </div>
+        <div className="payment">
+          <p className="cart_prouct_payment">결제 예정 금액</p>
+          <p className="cart_prouct_payment_price">0</p>
+        </div>
+      </div>
     </Wrap>
   );
-};
+}
 
 const Wrap = styled.div`
   /* cart header*/

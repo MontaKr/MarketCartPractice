@@ -1,38 +1,45 @@
 import styled from "styled-components";
-import CartHeader from "./cartHeader";
-import CartList from "./cartList";
-import TotalCart from "./totalCart";
 
-export const Cart = ({ cart, setCart, convertPrice }) => {
+export default function CartList({ cart, setCart, convertPrice }) {
   return (
     <Wrap>
-      <header className="header">
-        <h1>장바구니</h1>
-      </header>
-      <CartHeader />
-
-      {cart.length === 0 ? (
-        <div className="not">
-          <h2>장바구니에 담긴 상품이 없습니다.</h2>
-          <p>원하는 상품을 장바구니에 담아보세요.</p>
+      <section className="cart_product_list">
+        <input type="checkbox" />
+        <div className="cart_product_wrap">
+          <div className="cart_product_image">
+            <img src={cart.image} alt="product-img" />
+          </div>
+          <div className="cart_product_info">
+            <p className="seller_store">{cart.provider}</p>
+            <p className="product_name">{cart.name}</p>
+            <p className="price">
+              {convertPrice(cart.price * cart.quantity)}원
+            </p>
+            <p className="delivery">택배배송 / 무료배송</p>
+          </div>
         </div>
-      ) : (
-        cart.map((cart) => {
-          return (
-            <CartList
-              key={`key-${cart.id}`}
-              cart={cart}
-              setCart={setCart}
-              convertPrice={convertPrice}
-            />
-          );
-        })
-      )}
-
-      {cart.length === 0 ? "" : <TotalCart />}
+        <div className="cart_product_count">
+          <img
+            className="minus"
+            src="/images/icon-minus-line.svg"
+            alt="minus"
+          />
+          <div className="count">
+            <span>{cart.quantity}</span>
+          </div>
+          <img className="plus" src="/images/icon-plus-line.svg" alt="plus" />
+        </div>
+        <div className="cart_product_price">
+          <p className="total_price"></p>
+          <button className="btn_submit">주문하기</button>
+        </div>
+        <div className="product_remove">
+          <img src="/images/icon-delete.svg" alt="delete" />
+        </div>
+      </section>
     </Wrap>
   );
-};
+}
 
 const Wrap = styled.div`
   /* cart header*/

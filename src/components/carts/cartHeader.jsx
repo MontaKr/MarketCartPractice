@@ -1,38 +1,20 @@
 import styled from "styled-components";
-import CartHeader from "./cartHeader";
-import CartList from "./cartList";
-import TotalCart from "./totalCart";
 
-export const Cart = ({ cart, setCart, convertPrice }) => {
+export default function CartHeader() {
   return (
     <Wrap>
-      <header className="header">
-        <h1>장바구니</h1>
-      </header>
-      <CartHeader />
-
-      {cart.length === 0 ? (
-        <div className="not">
-          <h2>장바구니에 담긴 상품이 없습니다.</h2>
-          <p>원하는 상품을 장바구니에 담아보세요.</p>
+      <div className="cart_title_wrap">
+        <div className="tab_title">
+          <input type="checkbox" />
+          <span>상품정보</span>
+          <span>수량</span>
+          <span>상품금액</span>
+          <p>전체선택</p>
         </div>
-      ) : (
-        cart.map((cart) => {
-          return (
-            <CartList
-              key={`key-${cart.id}`}
-              cart={cart}
-              setCart={setCart}
-              convertPrice={convertPrice}
-            />
-          );
-        })
-      )}
-
-      {cart.length === 0 ? "" : <TotalCart />}
+      </div>
     </Wrap>
   );
-};
+}
 
 const Wrap = styled.div`
   /* cart header*/
