@@ -4,7 +4,8 @@
 
 ![22](https://user-images.githubusercontent.com/115155803/236393925-5f6b6346-2d7f-4365-8d31-1013562cca3f.gif)
 
+참고 유튜브 링크 : https://www.youtube.com/watch?v=m7NNIDKd8sc&ab_channel=%ED%9E%88%ED%9E%9B
+
 ### CodeSandBox
 
-참고 유튜브 링크 : https://www.youtube.com/watch?v=m7NNIDKd8sc&ab_channel=%ED%9E%88%ED%9E%9B
 [https://codesandbox.io/s/cartpractice-ut70lh?file=/src/App.js](https://codesandbox.io/s/cartpractice-ut70lh?file=/src/App.js)
