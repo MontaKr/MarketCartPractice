@@ -1,12 +1,35 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 
-export default function TotalCart() {
+export default function TotalCart({
+  total,
+  setTotal,
+  found,
+  cart,
+  convertPrice,
+}) {
+  useEffect(() => {
+    if (found) {
+      const temp = found.filter((item) => item.length !== 0);
+      const sum = temp.map((item) => item[0].price * item[0].quantity);
+      const reducer = (acc, cur) => acc + cur;
+      if (sum.length === 0) {
+        setTotal(0);
+        return;
+      }
+      const itemTotal = sum.reduce(reducer);
+      setTotal(itemTotal);
+    } else {
+      setTotal(0);
+    }
+  }, [cart, total, found, setTotal]);
+
   return (
     <Wrap>
       <div className="total">
         <div className="total_price">
           <p className="cart_product_total_price">총 상품금액</p>
-          <p className="cart_product_price">0</p>
+          <p className="cart_product_price">{convertPrice(total)}</p>
         </div>
         <div className="pay_minus">
           <img src="/images/icon-minus-line.svg" alt="minus" />
@@ -24,7 +47,7 @@ export default function TotalCart() {
         </div>
         <div className="payment">
           <p className="cart_prouct_payment">결제 예정 금액</p>
-          <p className="cart_prouct_payment_price">0</p>
+          <p className="cart_prouct_payment_price">{convertPrice(total)}</p>
         </div>
       </div>
     </Wrap>

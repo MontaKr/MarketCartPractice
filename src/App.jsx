@@ -8,6 +8,7 @@ import { TopNavigationBar } from "./components/header/topNavigationBar/topNaviga
 export default function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  const [checkLists, setCheckLists] = useState([]);
 
   const convertPrice = (price) => {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -40,7 +41,13 @@ export default function App() {
         <Route
           path="/cart"
           element={
-            <Basket cart={cart} setCart={setCart} convertPrice={convertPrice} />
+            <Basket
+              cart={cart}
+              setCart={setCart}
+              convertPrice={convertPrice}
+              checkLists={checkLists}
+              setCheckLists={setCheckLists}
+            />
           }
         />
       </Routes>

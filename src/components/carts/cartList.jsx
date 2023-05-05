@@ -1,10 +1,24 @@
 import styled from "styled-components";
 
-export default function CartList({ cart, setCart, convertPrice }) {
+export default function CartList({
+  cart,
+  setCart,
+  convertPrice,
+  handleQuantity,
+  handleRemove,
+  handleCheckList,
+  checkLists,
+}) {
   return (
     <Wrap>
       <section className="cart_product_list">
-        <input type="checkbox" />
+        <input
+          type="checkbox"
+          onChange={(e) => {
+            handleCheckList(e.currentTarget.checked, cart.id);
+          }}
+          checked={checkLists.includes(cart.id) ? true : false}
+        />
         <div className="cart_product_wrap">
           <div className="cart_product_image">
             <img src={cart.image} alt="product-img" />
@@ -23,17 +37,32 @@ export default function CartList({ cart, setCart, convertPrice }) {
             className="minus"
             src="/images/icon-minus-line.svg"
             alt="minus"
+            onClick={() => {
+              handleQuantity("minus", cart.id, cart.quantity - 1);
+            }}
           />
           <div className="count">
             <span>{cart.quantity}</span>
           </div>
-          <img className="plus" src="/images/icon-plus-line.svg" alt="plus" />
+          <img
+            className="plus"
+            src="/images/icon-plus-line.svg"
+            alt="plus"
+            onClick={() => {
+              handleQuantity("plus", cart.id, cart.quantity + 1);
+            }}
+          />
         </div>
         <div className="cart_product_price">
           <p className="total_price"></p>
           <button className="btn_submit">주문하기</button>
         </div>
-        <div className="product_remove">
+        <div
+          className="product_remove"
+          onClick={() => {
+            handleRemove(cart.id);
+          }}
+        >
           <img src="/images/icon-delete.svg" alt="delete" />
         </div>
       </section>

@@ -1,11 +1,17 @@
 import styled from "styled-components";
 
-export default function CartHeader() {
+export default function CartHeader({ handleAllCheck, isAllChecked }) {
   return (
     <Wrap>
       <div className="cart_title_wrap">
         <div className="tab_title">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            onChange={(e) => {
+              handleAllCheck(e.currentTarget.checked);
+            }}
+            checked={isAllChecked}
+          />
           <span>상품정보</span>
           <span>수량</span>
           <span>상품금액</span>
